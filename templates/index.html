@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Simple App</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Flask + JS Integration</h1>
+        <button onclick="checkStatus()">Test Connection</button>
+        <p id="response"></p>
+    </div>
+
+    <script>
+        async function checkStatus() {
+            const res = await fetch('/api/status');
+            const data = await res.json();
+            document.getElementById('response').innerText = data.message;
+        }
+    </script>
+</body>
+</html>
